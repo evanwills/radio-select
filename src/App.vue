@@ -1,40 +1,8 @@
 <script setup lang="ts">
 import RadioSelect from './components/RadioSelect.vue';
-import { appData, selectData, singleOption } from './components/RadioSelet.d.ts';
+import { appData, selectData, singleOption } from './types/radio-select.d';
 
-const data : appData = () => {
-  return {
-    options: [
-      {
-        value: '1',
-        label: 'option 1',
-        selected: false,
-      },
-      {
-        value: '2',
-        label: 'option 2',
-        selected: false,
-      },
-      {
-        value: '3',
-        label: 'option 3',
-        selected: false,
-      },
-      {
-        value: '4',
-        label: 'option 4',
-        selected: false,
-      },
-      {
-        value: '5',
-        label: 'option 5',
-        selected: false,
-      }
-    ]
-  }
-}
-
-const selectOptions : appData = [
+const selectOptions : singleOption[] = [
   {
     value: '1',
     label: 'option 1',
@@ -59,21 +27,23 @@ const selectOptions : appData = [
     value: '5',
     label: 'option 5',
     selected: false,
-  }
+  },
+  {
+    value: '6',
+    label: 'This is a rediculously long select option that really should have been edited down so it was shorter but we are going to use it as an example',
+    selected: true,
+  },
+  {
+    value: '7',
+    label: 'option 7',
+    selected: false,
+  },
 ];
 
 </script>
 
 <template>
-  <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
-  </div>
-  <RadioSelect id="select-ID" label="Radio select" v-bind:options="selectOptions" />
+  <RadioSelect id="select-ID" label="Radio select" v-bind:options="selectOptions" emptySelection="-- Please choose one --" />
 </template>
 
 <style scoped>
@@ -88,5 +58,8 @@ const selectOptions : appData = [
 }
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
+}
+#app {
+  max-width: 30rem !important;
 }
 </style>
